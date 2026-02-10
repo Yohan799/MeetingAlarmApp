@@ -1,0 +1,170 @@
+[
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_glow_circle.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\glow_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_glass_alarm_card.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\glass_alarm_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_liquid_glass_card.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\liquid_glass_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_button_dismiss_modern.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\button_dismiss_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_modern_google_btn.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\modern_google_btn.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_button_snooze_modern.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\button_snooze_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_google.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_google.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_gradient_button_modern.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\gradient_button_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_event_card_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\event_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_glass_container.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\glass_container.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_gradient_button_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\gradient_button_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_button_join_modern.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\button_join_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_circle_pulse.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\circle_pulse.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\layout_activity_sign_in.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.alarmify.meetings.app-merged_res-65:/drawable_gradient_button_modern.xml.flat",
+        "source": "com.alarmify.meetings.app-main-67:/drawable/gradient_button_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_snooze.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_snooze.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_alarm_indicator.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\alarm_indicator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_alarm_ringing.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_alarm_ringing.xml"
+    },
+    {
+        "merged": "com.alarmify.meetings.app-merged_res-65:/drawable_event_card_background.xml.flat",
+        "source": "com.alarmify.meetings.app-main-67:/drawable/event_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_dismiss.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_dismiss.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_alarm_logo.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_alarm_logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_button_secondary_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\button_secondary_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_card_background.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\layout_item_event.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\layout\\item_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\drawable_ic_join_meeting.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\drawable\\ic_join_meeting.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-merged_res-65:\\layout_activity_alarm_notification.xml.flat",
+        "source": "C:\\Users\\Lenovo\\.gradle\\daemon\\8.5\\com.alarmify.meetings.app-main-67:\\layout\\activity_alarm_notification.xml"
+    }
+]

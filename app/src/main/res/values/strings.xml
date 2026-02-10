@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meeting Alarm</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="welcome">Welcome</string>
+    <string name="loading">Loading...</string>
+    <string name="no_events">No upcoming events</string>
+    <string name="refresh">Refresh</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="cancel_alarm">Cancel Alarm</string>
+    <string name="alarm_set">Alarm set successfully</string>
+    <string name="alarm_cancelled">Alarm cancelled</string>
+    <string name="meeting_reminder">Meeting Reminder</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="snooze">Snooze</string>
+    <string name="join_meeting">Join Meeting</string>
+    <string name="no_meeting_link">No meeting link available</string>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#F59E0B</color>
+    <color name="accent_light">#FBBF24</color>
+    <color name="alarm_active">#F59E0B</color>
+    <color name="alarm_background">#1A1A1E</color>
+    <color name="alarm_inactive">#4B5563</color>
+    <color name="alarm_urgent">#EF4444</color>
+    <color name="background_primary">#0D0D0F</color>
+    <color name="background_secondary">#141417</color>
+    <color name="black">#000000</color>
+    <color name="button_primary">#4B7BF5</color>
+    <color name="button_primary_pressed">#3A62C4</color>
+    <color name="button_secondary">#2A2A30</color>
+    <color name="button_secondary_pressed">#3A3A42</color>
+    <color name="card_background">#1A1A1E</color>
+    <color name="card_background_elevated">#222228</color>
+    <color name="card_border">#2A2A30</color>
+    <color name="card_border_accent">#4B7BF5</color>
+    <color name="danger">#EF4444</color>
+    <color name="danger_light">#F87171</color>
+    <color name="dismiss_button">#4B5563</color>
+    <color name="glass_background">#1A1A1A1E</color>
+    <color name="glass_background_medium">#401A1A1E</color>
+    <color name="glass_border">#1AFFFFFF</color>
+    <color name="glass_border_medium">#33FFFFFF</color>
+    <color name="gradient_end">#3A62C4</color>
+    <color name="gradient_middle">#4B7BF5</color>
+    <color name="gradient_start">#2DD4BF</color>
+    <color name="info">#4B7BF5</color>
+    <color name="join_button">#10B981</color>
+    <color name="navigation_bar">#0D0D0F</color>
+    <color name="primary">#4B7BF5</color>
+    <color name="primary_dark">#3A62C4</color>
+    <color name="primary_light">#6B93F7</color>
+    <color name="ripple_light">#1AFFFFFF</color>
+    <color name="ripple_primary">#334B7BF5</color>
+    <color name="secondary">#2DD4BF</color>
+    <color name="secondary_dark">#20A896</color>
+    <color name="snooze_button">#2DD4BF</color>
+    <color name="status_bar">#0D0D0F</color>
+    <color name="success">#10B981</color>
+    <color name="success_light">#34D399</color>
+    <color name="surface">#1A1A1E</color>
+    <color name="surface_dark">#0D0D0F</color>
+    <color name="surface_elevated">#222228</color>
+    <color name="surface_light">#1A1A1E</color>
+    <color name="text_disabled">#4B5563</color>
+    <color name="text_on_accent">#0D0D0F</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_primary">#F5F5F7</color>
+    <color name="text_secondary">#9CA3AF</color>
+    <color name="text_tertiary">#6B7280</color>
+    <color name="transparent">#00000000</color>
+    <color name="warning">#F59E0B</color>
+    <color name="white">#FFFFFF</color>
+    <string name="alarm_cancelled">Alarm cancelled</string>
+    <string name="alarm_set">Alarm set successfully</string>
+    <string name="app_name">Meeting Alarm</string>
+    <string name="cancel_alarm">Cancel Alarm</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="join_meeting">Join Meeting</string>
+    <string name="loading">Loading...</string>
+    <string name="meeting_reminder">Meeting Reminder</string>
+    <string name="no_events">No upcoming events</string>
+    <string name="no_meeting_link">No meeting link available</string>
+    <string name="refresh">Refresh</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="snooze">Snooze</string>
+    <string name="welcome">Welcome</string>
+    <style name="ModernButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+    <style name="ModernButton.Primary" parent="ModernButton">
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+    <style name="ModernButton.Secondary" parent="ModernButton">
+        <item name="backgroundTint">@color/button_secondary</item>
+    </style>
+    <style name="ModernCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="strokeColor">@color/card_border</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style name="Theme.MeetingAlarm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/surface_dark</item>
+        <item name="android:statusBarColor">@color/surface_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+    <style name="Theme.MeetingAlarm.AlarmScreen" parent="Theme.MeetingAlarm">
+        <item name="android:windowBackground">@color/alarm_background</item>
+        <item name="android:statusBarColor">@color/alarm_background</item>
+        <item name="android:navigationBarColor">@color/alarm_background</item>
+        <item name="android:windowShowWallpaper">false</item>
+    </style>
+    <style name="Theme.MeetingAlarm.Splash" parent="Theme.MeetingAlarm">
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+        <item name="android:statusBarColor">@color/gradient_start</item>
+        <item name="android:navigationBarColor">@color/gradient_end</item>
+    </style>
+</resources>

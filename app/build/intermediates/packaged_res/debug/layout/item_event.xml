@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <!-- Card with gradient accent -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/event_card_background"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
+
+        <!-- Header Row: Title + Alarm Indicator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Gradient accent bar (left side indicator) -->
+            <View
+                android:id="@+id/accentBar"
+                android:layout_width="4dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/gradient_button_background" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvEventTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.01"
+                    android:maxLines="2"
+                    android:text="Team Meeting"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvEventTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif"
+                    android:text="15 Dec 2024, 10:30 AM"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Alarm Status Badge -->
+            <LinearLayout
+                android:id="@+id/alarmStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:background="@drawable/glass_alarm_card"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/alarmIndicator"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/alarm_indicator" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Active"
+                    android:textColor="@color/alarm_active"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.1"
+            android:background="@color/white" />
+
+        <!-- Action Buttons Row - PROPER SPACING -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Cancel Alarm Button (shown when alarm is set) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelAlarm"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:minWidth="0dp"
+                android:paddingHorizontal="16dp"
+                android:text="Cancel"
+                android:textColor="@color/text_tertiary"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:cornerRadius="12dp"
+                app:rippleColor="@color/ripple_light" />
+
+            <!-- 12dp spacing between Cancel and Join -->
+            <View
+                android:id="@+id/spacer1"
+                android:layout_width="12dp"
+                android:layout_height="1dp"
+                android:visibility="gone" />
+
+            <!-- Join Meeting Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnJoinMeeting"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:minWidth="0dp"
+                android:paddingHorizontal="16dp"
+                android:text="Join"
+                android:textColor="@color/join_button"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_join_meeting"
+                app:iconPadding="6dp"
+                app:iconSize="18dp"
+                app:iconTint="@color/join_button"
+                app:rippleColor="#3010B981" />
+
+            <!-- 12dp spacing between Join and Set Alarm -->
+            <View
+                android:id="@+id/spacer2"
+                android:layout_width="12dp"
+                android:layout_height="1dp"
+                android:visibility="gone" />
+
+            <!-- Set Alarm Button - Primary Action -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSetAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="@drawable/gradient_button_modern"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02"
+                android:minWidth="120dp"
+                android:paddingHorizontal="24dp"
+                android:stateListAnimator="@null"
+                android:text="Set Alarm"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:backgroundTint="@null"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

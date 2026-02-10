@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alarm_background">
+
+    <!-- Background decorative orbs -->
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-100dp"
+        android:alpha="0.15"
+        android:background="@drawable/glow_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="-60dp"
+        android:layout_marginBottom="-60dp"
+        android:alpha="0.1"
+        android:background="@drawable/glow_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Main Pulsing Background with Glow -->
+    <FrameLayout
+        android:id="@+id/pulseContainer"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toTopOf="@+id/contentCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <!-- Outer pulse ring -->
+        <View
+            android:id="@+id/pulseRing3"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:alpha="0.1"
+            android:background="@drawable/glow_circle" />
+
+        <!-- Middle pulse ring -->
+        <View
+            android:id="@+id/pulseRing2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:alpha="0.2"
+            android:background="@drawable/glow_circle" />
+
+        <!-- Inner pulse ring -->
+        <View
+            android:id="@+id/pulseBackground"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:alpha="0.4"
+            android:background="@drawable/glow_circle" />
+
+        <!-- Alarm Icon -->
+        <ImageView
+            android:id="@+id/ivAlarmIcon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_alarm_ringing"
+            app:tint="@color/white" />
+
+    </FrameLayout>
+
+    <!-- Content Card with Liquid Glass -->
+    <LinearLayout
+        android:id="@+id/contentCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/liquid_glass_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pulseContainer">
+
+        <!-- Meeting Reminder Label -->
+        <TextView
+            android:id="@+id/tvAlarmTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.8"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.15"
+            android:text="MEETING REMINDER"
+            android:textColor="@color/secondary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Event Title -->
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:text="Team Standup Meeting"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Gradient Divider Line -->
+        <View
+            android:layout_width="80dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/gradient_button_background" />
+
+        <!-- Time Display -->
+        <TextView
+            android:id="@+id/tvEventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-light"
+            android:letterSpacing="0.02"
+            android:text="10:30 AM"
+            android:textColor="@color/white"
+            android:textSize="52sp" />
+
+        <!-- Date Display -->
+        <TextView
+            android:id="@+id/tvEventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:alpha="0.75"
+            android:fontFamily="sans-serif"
+            android:text="Today, Dec 15 2024"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Meeting Link (if available) -->
+        <LinearLayout
+            android:id="@+id/meetingLinkContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/glass_alarm_card"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_join_meeting"
+                app:tint="@color/secondary" />
+
+            <TextView
+                android:id="@+id/tvMeetingLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Join via Google Meet"
+                android:textColor="@color/secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Action Buttons Container -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="48dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Join Meeting Button - Full Width (shown when meeting link exists) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnJoinMeeting"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_join_modern"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.03"
+            android:stateListAnimator="@null"
+            android:text="Join Meeting"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:backgroundTint="@null"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_join_meeting"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="22dp"
+            app:iconTint="@color/white" />
+
+        <!-- Snooze and Dismiss Buttons Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Snooze Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSnooze"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_snooze_modern"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02"
+                android:stateListAnimator="@null"
+                android:text="Snooze"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:backgroundTint="@null"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_snooze"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/white" />
+
+            <!-- 16dp visual gap between buttons (8dp margin on each side) -->
+
+            <!-- Dismiss Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDismiss"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_dismiss_modern"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02"
+                android:stateListAnimator="@null"
+                android:text="Dismiss"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"
+                app:backgroundTint="@null"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_dismiss"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/text_secondary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

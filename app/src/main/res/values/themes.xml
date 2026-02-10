@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme - Dark Mode -->
+    <style name="Theme.MeetingAlarm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/surface_dark</item>
+        <item name="android:statusBarColor">@color/surface_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+
+    <!-- Splash screen theme -->
+    <style name="Theme.MeetingAlarm.Splash" parent="Theme.MeetingAlarm">
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+        <item name="android:statusBarColor">@color/gradient_start</item>
+        <item name="android:navigationBarColor">@color/gradient_end</item>
+    </style>
+
+    <!-- Alarm screen theme -->
+    <style name="Theme.MeetingAlarm.AlarmScreen" parent="Theme.MeetingAlarm">
+        <item name="android:windowBackground">@color/alarm_background</item>
+        <item name="android:statusBarColor">@color/alarm_background</item>
+        <item name="android:navigationBarColor">@color/alarm_background</item>
+        <item name="android:windowShowWallpaper">false</item>
+    </style>
+
+    <!-- Modern Button Styles -->
+    <style name="ModernButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <style name="ModernButton.Primary" parent="ModernButton">
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+
+    <style name="ModernButton.Secondary" parent="ModernButton">
+        <item name="backgroundTint">@color/button_secondary</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="ModernCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="strokeColor">@color/card_border</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+</resources>
