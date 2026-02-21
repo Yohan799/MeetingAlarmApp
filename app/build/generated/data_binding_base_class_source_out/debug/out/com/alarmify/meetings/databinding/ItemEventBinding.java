@@ -4,46 +4,46 @@ package com.alarmify.meetings.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.alarmify.meetings.R;
-import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ItemEventBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final View accentBar;
+  public final LinearLayout actionsContainer;
 
   @NonNull
-  public final View alarmIndicator;
+  public final TextView btnCancelAlarm;
 
   @NonNull
-  public final LinearLayout alarmStatusBadge;
+  public final AppCompatButton btnJoinMeeting;
 
   @NonNull
-  public final MaterialButton btnCancelAlarm;
+  public final AppCompatButton btnSetAlarm;
 
   @NonNull
-  public final MaterialButton btnJoinMeeting;
+  public final AppCompatButton btnViewNotes;
 
   @NonNull
-  public final MaterialButton btnSetAlarm;
+  public final ConstraintLayout cardContainer;
 
   @NonNull
-  public final View spacer1;
+  public final TextView chipStatus;
 
   @NonNull
-  public final View spacer2;
+  public final View divider;
 
   @NonNull
   public final TextView tvEventTime;
@@ -51,27 +51,28 @@ public final class ItemEventBinding implements ViewBinding {
   @NonNull
   public final TextView tvEventTitle;
 
-  private ItemEventBinding(@NonNull FrameLayout rootView, @NonNull View accentBar,
-      @NonNull View alarmIndicator, @NonNull LinearLayout alarmStatusBadge,
-      @NonNull MaterialButton btnCancelAlarm, @NonNull MaterialButton btnJoinMeeting,
-      @NonNull MaterialButton btnSetAlarm, @NonNull View spacer1, @NonNull View spacer2,
-      @NonNull TextView tvEventTime, @NonNull TextView tvEventTitle) {
+  private ItemEventBinding(@NonNull ConstraintLayout rootView,
+      @NonNull LinearLayout actionsContainer, @NonNull TextView btnCancelAlarm,
+      @NonNull AppCompatButton btnJoinMeeting, @NonNull AppCompatButton btnSetAlarm,
+      @NonNull AppCompatButton btnViewNotes, @NonNull ConstraintLayout cardContainer,
+      @NonNull TextView chipStatus, @NonNull View divider, @NonNull TextView tvEventTime,
+      @NonNull TextView tvEventTitle) {
     this.rootView = rootView;
-    this.accentBar = accentBar;
-    this.alarmIndicator = alarmIndicator;
-    this.alarmStatusBadge = alarmStatusBadge;
+    this.actionsContainer = actionsContainer;
     this.btnCancelAlarm = btnCancelAlarm;
     this.btnJoinMeeting = btnJoinMeeting;
     this.btnSetAlarm = btnSetAlarm;
-    this.spacer1 = spacer1;
-    this.spacer2 = spacer2;
+    this.btnViewNotes = btnViewNotes;
+    this.cardContainer = cardContainer;
+    this.chipStatus = chipStatus;
+    this.divider = divider;
     this.tvEventTime = tvEventTime;
     this.tvEventTitle = tvEventTitle;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -96,51 +97,51 @@ public final class ItemEventBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.accentBar;
-      View accentBar = ViewBindings.findChildViewById(rootView, id);
-      if (accentBar == null) {
-        break missingId;
-      }
-
-      id = R.id.alarmIndicator;
-      View alarmIndicator = ViewBindings.findChildViewById(rootView, id);
-      if (alarmIndicator == null) {
-        break missingId;
-      }
-
-      id = R.id.alarmStatusBadge;
-      LinearLayout alarmStatusBadge = ViewBindings.findChildViewById(rootView, id);
-      if (alarmStatusBadge == null) {
+      id = R.id.actionsContainer;
+      LinearLayout actionsContainer = ViewBindings.findChildViewById(rootView, id);
+      if (actionsContainer == null) {
         break missingId;
       }
 
       id = R.id.btnCancelAlarm;
-      MaterialButton btnCancelAlarm = ViewBindings.findChildViewById(rootView, id);
+      TextView btnCancelAlarm = ViewBindings.findChildViewById(rootView, id);
       if (btnCancelAlarm == null) {
         break missingId;
       }
 
       id = R.id.btnJoinMeeting;
-      MaterialButton btnJoinMeeting = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnJoinMeeting = ViewBindings.findChildViewById(rootView, id);
       if (btnJoinMeeting == null) {
         break missingId;
       }
 
       id = R.id.btnSetAlarm;
-      MaterialButton btnSetAlarm = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnSetAlarm = ViewBindings.findChildViewById(rootView, id);
       if (btnSetAlarm == null) {
         break missingId;
       }
 
-      id = R.id.spacer1;
-      View spacer1 = ViewBindings.findChildViewById(rootView, id);
-      if (spacer1 == null) {
+      id = R.id.btnViewNotes;
+      AppCompatButton btnViewNotes = ViewBindings.findChildViewById(rootView, id);
+      if (btnViewNotes == null) {
         break missingId;
       }
 
-      id = R.id.spacer2;
-      View spacer2 = ViewBindings.findChildViewById(rootView, id);
-      if (spacer2 == null) {
+      id = R.id.cardContainer;
+      ConstraintLayout cardContainer = ViewBindings.findChildViewById(rootView, id);
+      if (cardContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.chipStatus;
+      TextView chipStatus = ViewBindings.findChildViewById(rootView, id);
+      if (chipStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.divider;
+      View divider = ViewBindings.findChildViewById(rootView, id);
+      if (divider == null) {
         break missingId;
       }
 
@@ -156,8 +157,8 @@ public final class ItemEventBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemEventBinding((FrameLayout) rootView, accentBar, alarmIndicator,
-          alarmStatusBadge, btnCancelAlarm, btnJoinMeeting, btnSetAlarm, spacer1, spacer2,
+      return new ItemEventBinding((ConstraintLayout) rootView, actionsContainer, btnCancelAlarm,
+          btnJoinMeeting, btnSetAlarm, btnViewNotes, cardContainer, chipStatus, divider,
           tvEventTime, tvEventTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);

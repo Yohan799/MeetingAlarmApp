@@ -12,7 +12,8 @@ data class CalendarEvent(
     val meetingLink: String? = null,
     val isAlarmSet: Boolean = false,
     val alarmMinutesBefore: Int = 0,
-    val isAllDay: Boolean = false
+    val isAllDay: Boolean = false,
+    val fathomRecordingId: String? = null
 ) {
     fun getFormattedStartTime(): String {
         val date = Date(startTime)

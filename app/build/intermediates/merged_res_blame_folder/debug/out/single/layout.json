@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/bottom_sheet_summary.xml",
+        "source": "com.alarmify.meetings.app-main-67:/layout/bottom_sheet_summary.xml"
+    },
+    {
         "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/activity_alarm_notification.xml",
         "source": "com.alarmify.meetings.app-main-67:/layout/activity_alarm_notification.xml"
     },
@@ -14,6 +18,18 @@
     {
         "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/item_event.xml",
         "source": "com.alarmify.meetings.app-main-67:/layout/item_event.xml"
+    },
+    {
+        "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/item_account.xml",
+        "source": "com.alarmify.meetings.app-main-67:/layout/item_account.xml"
+    },
+    {
+        "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/fragment_settings.xml",
+        "source": "com.alarmify.meetings.app-main-67:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/fragment_home.xml",
+        "source": "com.alarmify.meetings.app-main-67:/layout/fragment_home.xml"
     },
     {
         "merged": "com.alarmify.meetings.app-mergeDebugResources-64:/layout/activity_splash.xml",

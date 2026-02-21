@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="100dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="16dp"
+            android:text="@string/title_settings"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- Profile Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="8dp"
+            android:text="@string/section_profile"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/teal_core"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.05"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_glass_card"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_google"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProfile"
+                app:layout_constraintTop_toTopOf="@+id/ivProfile"
+                tools:text="John Doe" />
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProfile"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
+                tools:text="john.doe@gmail.com" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Accounts Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="8dp"
+            android:text="@string/section_accounts"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/teal_core"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.05"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAccounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_account"
+            tools:itemCount="2"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddAccount"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_secondary_background"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/add_account"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:stateListAnimator="@null"/>
+
+        <!-- Integrations Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="8dp"
+            android:text="@string/section_integrations"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/teal_core"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.05"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_glass_card"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivFathom"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_join_meeting"
+                app:tint="@color/teal_core"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvFathomTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/fathom_ai"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/ivFathom"
+                app:layout_constraintTop_toTopOf="@+id/ivFathom"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/fathom_description"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnFathomAction"
+                app:layout_constraintStart_toEndOf="@+id/ivFathom"
+                app:layout_constraintTop_toBottomOf="@+id/tvFathomTitle"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFathomAction"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_glass_pill"
+                android:text="@string/connect"
+                android:textColor="@color/teal_core"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:paddingHorizontal="12dp"
+                android:stateListAnimator="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Footer -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignOutAll"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_glass_card"
+            android:text="@string/sign_out_all"
+            android:textColor="@color/danger_core"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            android:stateListAnimator="@null"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/version"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_tertiary"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

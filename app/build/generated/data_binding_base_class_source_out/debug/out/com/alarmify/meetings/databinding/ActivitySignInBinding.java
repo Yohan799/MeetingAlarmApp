@@ -4,6 +4,7 @@ package com.alarmify.meetings.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,28 +23,59 @@ public final class ActivitySignInBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout btnSignInWithGoogle;
+  public final LinearLayout accountsListContainer;
 
   @NonNull
-  public final LinearLayout contentContainer;
+  public final View brandGlowInner;
+
+  @NonNull
+  public final View brandGlowOuter;
+
+  @NonNull
+  public final FrameLayout btnAddAccount;
+
+  @NonNull
+  public final FrameLayout btnContinue;
+
+  @NonNull
+  public final ConstraintLayout cardSignIn;
+
+  @NonNull
+  public final View divider;
 
   @NonNull
   public final ImageView ivLogo;
 
   @NonNull
+  public final TextView tvLimitWarning;
+
+  @NonNull
   public final TextView tvSubtitle;
+
+  @NonNull
+  public final TextView tvTerms;
 
   @NonNull
   public final TextView tvTitle;
 
   private ActivitySignInBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout btnSignInWithGoogle, @NonNull LinearLayout contentContainer,
-      @NonNull ImageView ivLogo, @NonNull TextView tvSubtitle, @NonNull TextView tvTitle) {
+      @NonNull LinearLayout accountsListContainer, @NonNull View brandGlowInner,
+      @NonNull View brandGlowOuter, @NonNull FrameLayout btnAddAccount,
+      @NonNull FrameLayout btnContinue, @NonNull ConstraintLayout cardSignIn, @NonNull View divider,
+      @NonNull ImageView ivLogo, @NonNull TextView tvLimitWarning, @NonNull TextView tvSubtitle,
+      @NonNull TextView tvTerms, @NonNull TextView tvTitle) {
     this.rootView = rootView;
-    this.btnSignInWithGoogle = btnSignInWithGoogle;
-    this.contentContainer = contentContainer;
+    this.accountsListContainer = accountsListContainer;
+    this.brandGlowInner = brandGlowInner;
+    this.brandGlowOuter = brandGlowOuter;
+    this.btnAddAccount = btnAddAccount;
+    this.btnContinue = btnContinue;
+    this.cardSignIn = cardSignIn;
+    this.divider = divider;
     this.ivLogo = ivLogo;
+    this.tvLimitWarning = tvLimitWarning;
     this.tvSubtitle = tvSubtitle;
+    this.tvTerms = tvTerms;
     this.tvTitle = tvTitle;
   }
 
@@ -74,15 +106,45 @@ public final class ActivitySignInBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnSignInWithGoogle;
-      LinearLayout btnSignInWithGoogle = ViewBindings.findChildViewById(rootView, id);
-      if (btnSignInWithGoogle == null) {
+      id = R.id.accountsListContainer;
+      LinearLayout accountsListContainer = ViewBindings.findChildViewById(rootView, id);
+      if (accountsListContainer == null) {
         break missingId;
       }
 
-      id = R.id.contentContainer;
-      LinearLayout contentContainer = ViewBindings.findChildViewById(rootView, id);
-      if (contentContainer == null) {
+      id = R.id.brandGlowInner;
+      View brandGlowInner = ViewBindings.findChildViewById(rootView, id);
+      if (brandGlowInner == null) {
+        break missingId;
+      }
+
+      id = R.id.brandGlowOuter;
+      View brandGlowOuter = ViewBindings.findChildViewById(rootView, id);
+      if (brandGlowOuter == null) {
+        break missingId;
+      }
+
+      id = R.id.btnAddAccount;
+      FrameLayout btnAddAccount = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddAccount == null) {
+        break missingId;
+      }
+
+      id = R.id.btnContinue;
+      FrameLayout btnContinue = ViewBindings.findChildViewById(rootView, id);
+      if (btnContinue == null) {
+        break missingId;
+      }
+
+      id = R.id.cardSignIn;
+      ConstraintLayout cardSignIn = ViewBindings.findChildViewById(rootView, id);
+      if (cardSignIn == null) {
+        break missingId;
+      }
+
+      id = R.id.divider;
+      View divider = ViewBindings.findChildViewById(rootView, id);
+      if (divider == null) {
         break missingId;
       }
 
@@ -92,9 +154,21 @@ public final class ActivitySignInBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvLimitWarning;
+      TextView tvLimitWarning = ViewBindings.findChildViewById(rootView, id);
+      if (tvLimitWarning == null) {
+        break missingId;
+      }
+
       id = R.id.tvSubtitle;
       TextView tvSubtitle = ViewBindings.findChildViewById(rootView, id);
       if (tvSubtitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTerms;
+      TextView tvTerms = ViewBindings.findChildViewById(rootView, id);
+      if (tvTerms == null) {
         break missingId;
       }
 
@@ -104,8 +178,9 @@ public final class ActivitySignInBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySignInBinding((ConstraintLayout) rootView, btnSignInWithGoogle,
-          contentContainer, ivLogo, tvSubtitle, tvTitle);
+      return new ActivitySignInBinding((ConstraintLayout) rootView, accountsListContainer,
+          brandGlowInner, brandGlowOuter, btnAddAccount, btnContinue, cardSignIn, divider, ivLogo,
+          tvLimitWarning, tvSubtitle, tvTerms, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

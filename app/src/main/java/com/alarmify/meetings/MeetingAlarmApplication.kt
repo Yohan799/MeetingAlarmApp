@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
+import com.alarmify.meetings.debug.CrashLogger
 
 class MeetingAlarmApplication : Application() {
 
@@ -15,6 +16,7 @@ class MeetingAlarmApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        CrashLogger.install(this) // DEBUG: global crash catcher
         createNotificationChannel()
     }
 

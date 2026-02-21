@@ -1,10 +1,13 @@
 package com.alarmify.meetings.ui.alarm
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.alarmify.meetings.alarm.AlarmService
 import com.alarmify.meetings.alarm.NativeAlarmManager
@@ -20,6 +23,9 @@ class AlarmNotificationActivity : AppCompatActivity() {
     private var eventTitle: String = ""
     private var startTime: Long = 0L
     private var meetingLink: String? = null
+    
+    // Animation holders
+    private val pulseAnimators = mutableListOf<ObjectAnimator>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,7 @@ class AlarmNotificationActivity : AppCompatActivity() {
 
         extractIntentData()
         setupUI()
+        startPulseAnimation()
         setupClickListeners()
     }
 
@@ -59,28 +66,51 @@ class AlarmNotificationActivity : AppCompatActivity() {
         binding.tvEventTitle.text = eventTitle
         
         val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
-        val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("EEE, dd MMM", Locale.getDefault())
         
         binding.tvEventTime.text = timeFormat.format(Date(startTime))
         binding.tvEventDate.text = dateFormat.format(Date(startTime))
         
         // Show meeting link and join button if available
         if (!meetingLink.isNullOrBlank()) {
-            binding.tvMeetingLink.visibility = View.VISIBLE
             binding.btnJoinMeeting.visibility = View.VISIBLE
-            
-            // Determine the meeting type from the link
-            val linkText = when {
-                meetingLink!!.contains("meet.google.com") -> "Join via Google Meet"
-                meetingLink!!.contains("zoom.us") -> "Join via Zoom"
-                meetingLink!!.contains("teams.microsoft.com") -> "Join via Microsoft Teams"
-                meetingLink!!.contains("webex.com") -> "Join via Webex"
-                else -> "Join Meeting"
+            binding.btnJoinMeeting.text = "Join now"
+            binding.btnJoinMeeting.setOnClickListener {
+                joinMeeting()
             }
-            binding.tvMeetingLink.text = linkText
         } else {
-            binding.tvMeetingLink.visibility = View.GONE
             binding.btnJoinMeeting.visibility = View.GONE
+        }
+    }
+    
+    private fun startPulseAnimation() {
+        // Create pulsing effect for rings
+        val rings = listOf(binding.pulseRing1, binding.pulseRing2, binding.pulseRing3)
+        
+        rings.forEachIndexed { index, view ->
+            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.2f, 1f)
+            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.2f, 1f)
+            val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.3f, 0.1f, 0.3f)
+            
+            val animator = ObjectAnimator.ofPropertyValuesHolder(view, scaleX, scaleY, alpha).apply {
+                duration = 2000
+                repeatCount = ObjectAnimator.INFINITE
+                interpolator = AccelerateDecelerateInterpolator()
+                startDelay = index * 300L
+                start()
+            }
+            pulseAnimators.add(animator)
+        }
+        
+        // Animate icon punch
+        val iconScaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.1f, 1f)
+        val iconScaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.1f, 1f)
+        ObjectAnimator.ofPropertyValuesHolder(binding.ivAlarmIcon, iconScaleX, iconScaleY).apply {
+             duration = 1000
+             repeatCount = ObjectAnimator.INFINITE
+             interpolator = AccelerateDecelerateInterpolator()
+             start()
+             pulseAnimators.add(this)
         }
     }
 
@@ -92,26 +122,19 @@ class AlarmNotificationActivity : AppCompatActivity() {
         binding.btnSnooze.setOnClickListener {
             snoozeAlarm()
         }
-        
-        binding.btnJoinMeeting.setOnClickListener {
-            joinMeeting()
-        }
-        
-        binding.tvMeetingLink.setOnClickListener {
-            joinMeeting()
-        }
     }
 
     private fun dismissAlarm() {
-        // Stop the alarm service
+        stopAnimations()
         val serviceIntent = Intent(this, AlarmService::class.java).apply {
             action = AlarmService.ACTION_DISMISS
         }
         startService(serviceIntent)
-        finish()
+        finishAndRemoveTask()
     }
 
     private fun snoozeAlarm() {
+        stopAnimations()
         // Snooze the alarm for 5 minutes
         val serviceIntent = Intent(this, AlarmService::class.java).apply {
             action = AlarmService.ACTION_SNOOZE
@@ -121,7 +144,7 @@ class AlarmNotificationActivity : AppCompatActivity() {
             putExtra(NativeAlarmManager.EXTRA_MEETING_LINK, meetingLink)
         }
         startService(serviceIntent)
-        finish()
+        finishAndRemoveTask()
     }
     
     private fun joinMeeting() {
@@ -129,17 +152,24 @@ class AlarmNotificationActivity : AppCompatActivity() {
             try {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                 startActivity(intent)
-                // Dismiss the alarm after joining
                 dismissAlarm()
             } catch (e: Exception) {
-                // If we can't open the link, just dismiss
                 dismissAlarm()
             }
         }
     }
+    
+    private fun stopAnimations() {
+        pulseAnimators.forEach { it.cancel() }
+        pulseAnimators.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAnimations()
+    }
 
     override fun onBackPressed() {
-        // Prevent back button from dismissing alarm
-        // User must explicitly dismiss or snooze
+        // Prevent back button
     }
 }

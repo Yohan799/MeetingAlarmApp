@@ -1,86 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- ═══════════════════════════════════════════════════════════════════ -->
-    <!-- Deep Space Professional - Premium Dark Mode Color Palette           -->
+    <!-- Obsidian Cosmos - Premium Design System Tokens                       -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
 
-    <!-- Primary Background Colors -->
-    <color name="background_primary">#0D0D0F</color>      <!-- Deep Charcoal - Main dark background -->
-    <color name="background_secondary">#141417</color>    <!-- Slightly lighter for depth -->
-    <color name="surface">#1A1A1E</color>                 <!-- Soft Black - Cards, dialogs -->
-    <color name="surface_elevated">#222228</color>        <!-- Elevated surfaces -->
+    <!-- Core Backgrounds -->
+    <color name="bg_void">#080810</color>           <!-- True deep background -->
+    <color name="bg_surface">#0F0F18</color>        <!-- Elevated cards level 1 -->
+    <color name="bg_raised">#161625</color>         <!-- Dialogs, sheets level 2 -->
+
+    <!-- Glassmorphism -->
+    <color name="glass_fill">#0DFFFFFF</color>      <!-- ~3.1% white (approx 0D hex) -->
+    <color name="glass_border">#14FFFFFF</color>    <!-- 8% white border -->
+    <color name="glass_border_highlight">#33FFFFFF</color>
     
-    <!-- Legacy support -->
-    <color name="surface_dark">#0D0D0F</color>
-    <color name="surface_light">#1A1A1E</color>
+    <!-- Primary Brand Colors -->
+    <color name="primary_vivid">#5B8AF8</color>     <!-- Electric Blue -->
+    <color name="primary_glow">#405B8AF8</color>    <!-- 25% Opacity -->
+    <color name="primary_deep">#1E3A7A</color>      <!-- Shadow/Deep tone -->
 
-    <!-- Brand Colors -->
-    <color name="primary">#4B7BF5</color>                 <!-- Electric Cobalt Blue - Main actions -->
-    <color name="primary_dark">#3A62C4</color>            <!-- Darker blue for pressed states -->
-    <color name="primary_light">#6B93F7</color>           <!-- Lighter blue for highlights -->
-    <color name="secondary">#2DD4BF</color>               <!-- Soft Teal - Secondary elements -->
-    <color name="secondary_dark">#20A896</color>          <!-- Darker teal -->
-
-    <!-- Accent/Alarm Colors -->
-    <color name="accent">#F59E0B</color>                  <!-- Warm Amber - Alarm indicators -->
-    <color name="accent_light">#FBBF24</color>            <!-- Lighter amber for glow effects -->
-    <color name="alarm_active">#F59E0B</color>            <!-- Warm Amber - Active alarm state -->
-    <color name="alarm_urgent">#EF4444</color>            <!-- Coral Red - Critical/urgent alarms -->
-    <color name="alarm_background">#1A1A1E</color>        <!-- Alarm screen background -->
-    <color name="alarm_inactive">#4B5563</color>          <!-- Gray for inactive state -->
+    <!-- Secondary/Accent Colors -->
+    <color name="teal_core">#2FF4DC</color>         <!-- Luminous Teal -->
+    <color name="teal_glow">#302FF4DC</color>       <!-- Ambient glow -->
+    <color name="teal_muted">#1A8A7E</color>        <!-- Darker surfaces -->
 
     <!-- Semantic Colors -->
-    <color name="success">#10B981</color>                 <!-- Emerald - Confirmed events -->
-    <color name="success_light">#34D399</color>           <!-- Light emerald -->
-    <color name="warning">#F59E0B</color>                 <!-- Warm Amber - Warnings -->
-    <color name="danger">#EF4444</color>                  <!-- Coral Red - Errors, critical -->
-    <color name="danger_light">#F87171</color>            <!-- Light coral -->
-    <color name="info">#4B7BF5</color>                    <!-- Electric Blue - Info -->
+    <color name="amber_pulse">#FBBF24</color>       <!-- Alarm states, urgency -->
+    <color name="amber_glow">#30FBBF24</color>
+    <color name="emerald_action">#22D3A8</color>    <!-- Join button -->
+    <color name="emerald_glow">#2522D3A8</color>
+    <color name="danger_core">#FF5E5E</color>       <!-- Critical alerts -->
 
     <!-- Text Colors -->
-    <color name="text_primary">#F5F5F7</color>            <!-- Off-White - Main text -->
-    <color name="text_secondary">#9CA3AF</color>          <!-- Cool Gray - Muted text -->
-    <color name="text_tertiary">#6B7280</color>           <!-- Darker gray - Hints -->
-    <color name="text_disabled">#4B5563</color>           <!-- Disabled text -->
-    <color name="text_on_primary">#FFFFFF</color>         <!-- Text on primary buttons -->
-    <color name="text_on_accent">#0D0D0F</color>          <!-- Text on amber backgrounds -->
+    <color name="text_primary">#F2F2FF</color>      <!-- Near-white, cool cast -->
+    <color name="text_secondary">#8B95B0</color>    <!-- Cool slate -->
+    <color name="text_tertiary">#4A5270</color>     <!-- Ghost text -->
+    <color name="text_inverse">#0A0A14</color>      <!-- Dark text on light buttons -->
+    <color name="text_teal">#2FF4DC</color>         <!-- Teal text -->
 
-    <!-- Button Colors -->
-    <color name="button_primary">#4B7BF5</color>          <!-- Electric Cobalt Blue -->
-    <color name="button_primary_pressed">#3A62C4</color>  <!-- Pressed state -->
-    <color name="button_secondary">#2A2A30</color>        <!-- Secondary buttons -->
-    <color name="button_secondary_pressed">#3A3A42</color>
-    <color name="snooze_button">#2DD4BF</color>           <!-- Soft Teal for snooze -->
-    <color name="dismiss_button">#4B5563</color>          <!-- Gray for dismiss -->
-    <color name="join_button">#10B981</color>             <!-- Emerald for join meeting -->
-
-    <!-- Card Colors -->
-    <color name="card_background">#1A1A1E</color>         <!-- Soft Black -->
-    <color name="card_background_elevated">#222228</color>
-    <color name="card_border">#2A2A30</color>             <!-- Subtle border -->
-    <color name="card_border_accent">#4B7BF5</color>      <!-- Accent border -->
-
-    <!-- Gradient Colors (matching app icon) -->
-    <color name="gradient_start">#2DD4BF</color>          <!-- Soft Teal -->
-    <color name="gradient_middle">#4B7BF5</color>         <!-- Electric Cobalt -->
-    <color name="gradient_end">#3A62C4</color>            <!-- Deep Blue -->
-
-    <!-- Glass/Glassmorphism Effect -->
-    <color name="glass_background">#1A1A1A1E</color>      <!-- 10% opacity surface -->
-    <color name="glass_background_medium">#401A1A1E</color> <!-- 25% opacity -->
-    <color name="glass_border">#1AFFFFFF</color>          <!-- 10% white border -->
-    <color name="glass_border_medium">#33FFFFFF</color>   <!-- 20% white border -->
-
-    <!-- Common/Utility -->
+    <!-- Utility -->
+    <color name="divider">#0DFFFFFF</color>         <!-- 5% white -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
-    
-    <!-- Ripple/Touch Feedback -->
-    <color name="ripple_light">#1AFFFFFF</color>          <!-- Light ripple -->
-    <color name="ripple_primary">#334B7BF5</color>        <!-- Blue ripple -->
 
-    <!-- Status Bar & Navigation -->
-    <color name="status_bar">#0D0D0F</color>
-    <color name="navigation_bar">#0D0D0F</color>
+    <!-- Gradient Tokens -->
+    <color name="gradient_start">#2FF4DC</color>    <!-- Teal -->
+    <color name="gradient_mid">#5B8AF8</color>      <!-- Electric Blue -->
+    <color name="gradient_end">#3A5FD0</color>      <!-- Deep Cobalt -->
+
+    <!-- Legacy Mappings (to prevent build errors during migration) -->
+    <color name="primary">@color/primary_vivid</color>
+    <color name="primary_dark">@color/primary_deep</color>
+    <color name="accent">@color/amber_pulse</color>
+    <color name="background_primary">@color/bg_void</color>
+    <color name="surface">@color/bg_surface</color>
+
+    <!-- Drawable-referenced colors (mapped to design system tokens) -->
+    <color name="alarm_active">@color/amber_pulse</color>
+    <color name="surface_light">@color/bg_raised</color>
+    <color name="card_border">@color/glass_border</color>
+    <color name="card_background">@color/bg_surface</color>
+    <color name="gradient_middle">@color/gradient_mid</color>
 </resources>

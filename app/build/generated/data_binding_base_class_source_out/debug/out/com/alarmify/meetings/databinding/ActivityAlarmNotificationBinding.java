@@ -10,11 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.alarmify.meetings.R;
-import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,31 +24,31 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final MaterialButton btnDismiss;
+  public final AppCompatButton btnDismiss;
 
   @NonNull
-  public final MaterialButton btnJoinMeeting;
+  public final AppCompatButton btnJoinMeeting;
 
   @NonNull
-  public final MaterialButton btnSnooze;
+  public final AppCompatButton btnSnooze;
 
   @NonNull
   public final LinearLayout buttonContainer;
 
   @NonNull
-  public final LinearLayout contentCard;
+  public final ConstraintLayout contentCard;
+
+  @NonNull
+  public final View divider;
 
   @NonNull
   public final ImageView ivAlarmIcon;
 
   @NonNull
-  public final LinearLayout meetingLinkContainer;
-
-  @NonNull
-  public final View pulseBackground;
-
-  @NonNull
   public final FrameLayout pulseContainer;
+
+  @NonNull
+  public final View pulseRing1;
 
   @NonNull
   public final View pulseRing2;
@@ -72,23 +72,23 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
   public final TextView tvMeetingLink;
 
   private ActivityAlarmNotificationBinding(@NonNull ConstraintLayout rootView,
-      @NonNull MaterialButton btnDismiss, @NonNull MaterialButton btnJoinMeeting,
-      @NonNull MaterialButton btnSnooze, @NonNull LinearLayout buttonContainer,
-      @NonNull LinearLayout contentCard, @NonNull ImageView ivAlarmIcon,
-      @NonNull LinearLayout meetingLinkContainer, @NonNull View pulseBackground,
-      @NonNull FrameLayout pulseContainer, @NonNull View pulseRing2, @NonNull View pulseRing3,
-      @NonNull TextView tvAlarmTitle, @NonNull TextView tvEventDate, @NonNull TextView tvEventTime,
-      @NonNull TextView tvEventTitle, @NonNull TextView tvMeetingLink) {
+      @NonNull AppCompatButton btnDismiss, @NonNull AppCompatButton btnJoinMeeting,
+      @NonNull AppCompatButton btnSnooze, @NonNull LinearLayout buttonContainer,
+      @NonNull ConstraintLayout contentCard, @NonNull View divider, @NonNull ImageView ivAlarmIcon,
+      @NonNull FrameLayout pulseContainer, @NonNull View pulseRing1, @NonNull View pulseRing2,
+      @NonNull View pulseRing3, @NonNull TextView tvAlarmTitle, @NonNull TextView tvEventDate,
+      @NonNull TextView tvEventTime, @NonNull TextView tvEventTitle,
+      @NonNull TextView tvMeetingLink) {
     this.rootView = rootView;
     this.btnDismiss = btnDismiss;
     this.btnJoinMeeting = btnJoinMeeting;
     this.btnSnooze = btnSnooze;
     this.buttonContainer = buttonContainer;
     this.contentCard = contentCard;
+    this.divider = divider;
     this.ivAlarmIcon = ivAlarmIcon;
-    this.meetingLinkContainer = meetingLinkContainer;
-    this.pulseBackground = pulseBackground;
     this.pulseContainer = pulseContainer;
+    this.pulseRing1 = pulseRing1;
     this.pulseRing2 = pulseRing2;
     this.pulseRing3 = pulseRing3;
     this.tvAlarmTitle = tvAlarmTitle;
@@ -126,19 +126,19 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnDismiss;
-      MaterialButton btnDismiss = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnDismiss = ViewBindings.findChildViewById(rootView, id);
       if (btnDismiss == null) {
         break missingId;
       }
 
       id = R.id.btnJoinMeeting;
-      MaterialButton btnJoinMeeting = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnJoinMeeting = ViewBindings.findChildViewById(rootView, id);
       if (btnJoinMeeting == null) {
         break missingId;
       }
 
       id = R.id.btnSnooze;
-      MaterialButton btnSnooze = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton btnSnooze = ViewBindings.findChildViewById(rootView, id);
       if (btnSnooze == null) {
         break missingId;
       }
@@ -150,8 +150,14 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
       }
 
       id = R.id.contentCard;
-      LinearLayout contentCard = ViewBindings.findChildViewById(rootView, id);
+      ConstraintLayout contentCard = ViewBindings.findChildViewById(rootView, id);
       if (contentCard == null) {
+        break missingId;
+      }
+
+      id = R.id.divider;
+      View divider = ViewBindings.findChildViewById(rootView, id);
+      if (divider == null) {
         break missingId;
       }
 
@@ -161,21 +167,15 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.meetingLinkContainer;
-      LinearLayout meetingLinkContainer = ViewBindings.findChildViewById(rootView, id);
-      if (meetingLinkContainer == null) {
-        break missingId;
-      }
-
-      id = R.id.pulseBackground;
-      View pulseBackground = ViewBindings.findChildViewById(rootView, id);
-      if (pulseBackground == null) {
-        break missingId;
-      }
-
       id = R.id.pulseContainer;
       FrameLayout pulseContainer = ViewBindings.findChildViewById(rootView, id);
       if (pulseContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.pulseRing1;
+      View pulseRing1 = ViewBindings.findChildViewById(rootView, id);
+      if (pulseRing1 == null) {
         break missingId;
       }
 
@@ -222,9 +222,9 @@ public final class ActivityAlarmNotificationBinding implements ViewBinding {
       }
 
       return new ActivityAlarmNotificationBinding((ConstraintLayout) rootView, btnDismiss,
-          btnJoinMeeting, btnSnooze, buttonContainer, contentCard, ivAlarmIcon,
-          meetingLinkContainer, pulseBackground, pulseContainer, pulseRing2, pulseRing3,
-          tvAlarmTitle, tvEventDate, tvEventTime, tvEventTitle, tvMeetingLink);
+          btnJoinMeeting, btnSnooze, buttonContainer, contentCard, divider, ivAlarmIcon,
+          pulseContainer, pulseRing1, pulseRing2, pulseRing3, tvAlarmTitle, tvEventDate,
+          tvEventTime, tvEventTitle, tvMeetingLink);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

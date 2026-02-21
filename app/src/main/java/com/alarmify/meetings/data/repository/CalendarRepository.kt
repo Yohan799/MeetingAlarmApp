@@ -10,6 +10,7 @@ import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.Calendar
 import com.google.api.services.calendar.CalendarScopes
 import com.alarmify.meetings.data.model.CalendarEvent
+import com.alarmify.meetings.debug.CrashLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -52,36 +53,83 @@ class CalendarRepository(private val context: Context) {
     }
 
     /**
-     * Fetch upcoming events from ALL Google Calendars (next 30 days)
+     * Fetch upcoming events from ALL authorized Google Accounts (next 30 days)
      */
     suspend fun fetchUpcomingEvents(): List<CalendarEvent> = withContext(Dispatchers.IO) {
-        val events = mutableListOf<CalendarEvent>()
+        val allEvents = mutableListOf<CalendarEvent>()
+        val accountRepository = AccountRepository(context)
+        val accounts = accountRepository.getAuthorizedAccounts()
 
-        try {
-            val service = getCalendarService()
-            if (service == null) {
-                Log.e(TAG, "Calendar service is null - user not signed in?")
-                return@withContext events
+        CrashLogger.logDebug(context, "Calendar", "Authorized accounts: ${accounts.size} -> $accounts")
+
+        if (accounts.isEmpty()) {
+            // Fallback: Check for legacy single account if no multi-accounts stored yet
+            val legacyAccount = GoogleSignIn.getLastSignedInAccount(context)
+            if (legacyAccount != null) {
+                CrashLogger.logDebug(context, "Calendar", "Using legacy account: ${legacyAccount.email}")
+                // Migrate legacy account to new repository
+                accountRepository.addAccount(legacyAccount.email ?: "")
+                return@withContext fetchEventsForAccount(legacyAccount.email ?: "")
             }
+            CrashLogger.logDebug(context, "Calendar", "No accounts found at all")
+            return@withContext emptyList()
+        }
+
+        for (email in accounts) {
+            try {
+                CrashLogger.logDebug(context, "Calendar", "Fetching events for: $email")
+                val accountEvents = fetchEventsForAccount(email)
+                CrashLogger.logDebug(context, "Calendar", "Got ${accountEvents.size} events for $email")
+                allEvents.addAll(accountEvents)
+            } catch (e: Exception) {
+                CrashLogger.logError(context, "Calendar-fetch-$email", e)
+            }
+        }
+
+        // Sort all merged events by start time
+        allEvents.sortBy { it.startTime }
+        
+        CrashLogger.logDebug(context, "Calendar", "Total events: ${allEvents.size}")
+
+        return@withContext allEvents
+    }
+
+    /**
+     * Helper to fetch events for a single account email
+     */
+    private fun fetchEventsForAccount(email: String): List<CalendarEvent> {
+        val events = mutableListOf<CalendarEvent>()
+        
+        try {
+            CrashLogger.logDebug(context, "Calendar", "Creating credential for $email")
+            // Create credential for this specific account
+            val credential = GoogleAccountCredential.usingOAuth2(
+                context,
+                listOf(CalendarScopes.CALENDAR_READONLY)
+            ).apply {
+                selectedAccountName = email
+            }
+
+            CrashLogger.logDebug(context, "Calendar", "Building Calendar service for $email")
+            val service = Calendar.Builder(
+                NetHttpTransport(),
+                GsonFactory.getDefaultInstance(),
+                credential
+            )
+                .setApplicationName(APPLICATION_NAME)
+                .build()
 
             val now = DateTime(System.currentTimeMillis())
             val thirtyDaysLater = DateTime(System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000))
 
-            Log.d(TAG, "========== GOOGLE CALENDAR DEBUG ==========")
-            Log.d(TAG, "Fetching events from: $now to $thirtyDaysLater")
-
-            // Get all calendars the user has access to
+            CrashLogger.logDebug(context, "Calendar", "Listing calendars for $email...")
+            // Get all calendars for this account
             val calendarList = service.calendarList().list().execute()
             val calendars = calendarList.items ?: emptyList()
-            
-            Log.d(TAG, "Found ${calendars.size} calendars:")
-            calendars.forEachIndexed { index, cal ->
-                Log.d(TAG, "  ${index + 1}. ${cal.summary} (ID: ${cal.id})")
-            }
+            CrashLogger.logDebug(context, "Calendar", "Found ${calendars.size} calendars for $email")
             
             val calendarIds = calendars.map { it.id }
 
-            // Fetch events from each calendar
             for (calendarId in calendarIds) {
                 try {
                     val eventList = service.events().list(calendarId)
@@ -89,34 +137,22 @@ class CalendarRepository(private val context: Context) {
                         .setTimeMax(thirtyDaysLater)
                         .setOrderBy("startTime")
                         .setSingleEvents(true)
-                        .setMaxResults(250)
+                        .setMaxResults(100)
                         .execute()
 
                     val calendarEvents = eventList.items ?: emptyList()
-                    Log.d(TAG, "Calendar '${calendars.find { it.id == calendarId }?.summary ?: calendarId}': ${calendarEvents.size} events")
                     
                     calendarEvents.forEach { event ->
-                        Log.d(TAG, "  - ${event.summary} | ${event.start?.dateTime ?: event.start?.date}")
-                        
-                        // Get start time (handle both dateTime and date-only events)
                         val startTime = event.start?.dateTime?.value 
                             ?: event.start?.date?.value 
                             ?: 0L
                         
-                        // Get end time
                         val endTime = event.end?.dateTime?.value 
                             ?: event.end?.date?.value 
                             ?: 0L
 
-                        // Determine if it's an all-day event
                         val isAllDay = event.start?.date != null && event.start?.dateTime == null
-
-                        // Extract meeting link from various sources
                         val meetingLink = extractMeetingLink(event)
-                        
-                        if (meetingLink != null) {
-                            Log.d(TAG, "    Meeting link found: $meetingLink")
-                        }
 
                         events.add(
                             CalendarEvent(
@@ -127,28 +163,20 @@ class CalendarRepository(private val context: Context) {
                                 endTime = endTime,
                                 location = event.location,
                                 meetingLink = meetingLink,
-                                isAllDay = isAllDay
+                                isAllDay = isAllDay,
                             )
                         )
                     }
-                    
                 } catch (e: Exception) {
-                    Log.w(TAG, "Could not fetch events from calendar $calendarId: ${e.message}")
+                    CrashLogger.logError(context, "Calendar-cal-$calendarId", e)
                 }
             }
-
-            // Sort all events by start time
-            events.sortBy { it.startTime }
-            
-            Log.d(TAG, "========== SUMMARY ==========")
-            Log.d(TAG, "Total events from all calendars: ${events.size}")
-            Log.d(TAG, "==============================")
-
         } catch (e: Exception) {
-            Log.e(TAG, "Error fetching events: ${e.message}", e)
+            CrashLogger.logError(context, "Calendar-account-$email", e)
+            throw e
         }
-
-        return@withContext events
+        
+        return events
     }
     
     /**

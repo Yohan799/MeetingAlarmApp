@@ -4,7 +4,7 @@
             "outputFile": "com.alarmify.meetings.app-mergeDebugResources-63:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-3\\12311f9339f34fd1dec3c60164d4b59c\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-3\\1c9af59a1221cc6f4255c698267e1496\\transformed\\play-services-auth-20.7.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-3\\599e39c0bc355b25e1f81a1bd3a34b92\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\Lenovo\\.gradle\\caches\\transforms-3\\74113b173618f727409bb6a1504fde45\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

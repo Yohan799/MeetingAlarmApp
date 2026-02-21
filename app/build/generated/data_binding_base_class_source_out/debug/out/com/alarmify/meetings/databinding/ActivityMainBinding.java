@@ -4,70 +4,38 @@ package com.alarmify.meetings.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.alarmify.meetings.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
-  public final ImageButton btnRefresh;
+  public final BottomNavigationView bottomNavigationView;
 
   @NonNull
-  public final LinearLayout btnSignOut;
+  public final FrameLayout fragmentContainer;
 
-  @NonNull
-  public final LinearLayout emptyStateContainer;
-
-  @NonNull
-  public final ProgressBar progressBar;
-
-  @NonNull
-  public final RecyclerView recyclerViewEvents;
-
-  @NonNull
-  public final SwipeRefreshLayout swipeRefreshLayout;
-
-  @NonNull
-  public final Toolbar toolbar;
-
-  @NonNull
-  public final TextView tvEmptyState;
-
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull ImageButton btnRefresh,
-      @NonNull LinearLayout btnSignOut, @NonNull LinearLayout emptyStateContainer,
-      @NonNull ProgressBar progressBar, @NonNull RecyclerView recyclerViewEvents,
-      @NonNull SwipeRefreshLayout swipeRefreshLayout, @NonNull Toolbar toolbar,
-      @NonNull TextView tvEmptyState) {
+  private ActivityMainBinding(@NonNull LinearLayout rootView,
+      @NonNull BottomNavigationView bottomNavigationView, @NonNull FrameLayout fragmentContainer) {
     this.rootView = rootView;
-    this.btnRefresh = btnRefresh;
-    this.btnSignOut = btnSignOut;
-    this.emptyStateContainer = emptyStateContainer;
-    this.progressBar = progressBar;
-    this.recyclerViewEvents = recyclerViewEvents;
-    this.swipeRefreshLayout = swipeRefreshLayout;
-    this.toolbar = toolbar;
-    this.tvEmptyState = tvEmptyState;
+    this.bottomNavigationView = bottomNavigationView;
+    this.fragmentContainer = fragmentContainer;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -92,57 +60,20 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnRefresh;
-      ImageButton btnRefresh = ViewBindings.findChildViewById(rootView, id);
-      if (btnRefresh == null) {
+      id = R.id.bottomNavigationView;
+      BottomNavigationView bottomNavigationView = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavigationView == null) {
         break missingId;
       }
 
-      id = R.id.btnSignOut;
-      LinearLayout btnSignOut = ViewBindings.findChildViewById(rootView, id);
-      if (btnSignOut == null) {
+      id = R.id.fragmentContainer;
+      FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, id);
+      if (fragmentContainer == null) {
         break missingId;
       }
 
-      id = R.id.emptyStateContainer;
-      LinearLayout emptyStateContainer = ViewBindings.findChildViewById(rootView, id);
-      if (emptyStateContainer == null) {
-        break missingId;
-      }
-
-      id = R.id.progressBar;
-      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
-      if (progressBar == null) {
-        break missingId;
-      }
-
-      id = R.id.recyclerViewEvents;
-      RecyclerView recyclerViewEvents = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerViewEvents == null) {
-        break missingId;
-      }
-
-      id = R.id.swipeRefreshLayout;
-      SwipeRefreshLayout swipeRefreshLayout = ViewBindings.findChildViewById(rootView, id);
-      if (swipeRefreshLayout == null) {
-        break missingId;
-      }
-
-      id = R.id.toolbar;
-      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
-        break missingId;
-      }
-
-      id = R.id.tvEmptyState;
-      TextView tvEmptyState = ViewBindings.findChildViewById(rootView, id);
-      if (tvEmptyState == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((CoordinatorLayout) rootView, btnRefresh, btnSignOut,
-          emptyStateContainer, progressBar, recyclerViewEvents, swipeRefreshLayout, toolbar,
-          tvEmptyState);
+      return new ActivityMainBinding((LinearLayout) rootView, bottomNavigationView,
+          fragmentContainer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

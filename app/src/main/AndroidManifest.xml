@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <!-- DEBUG: for saving crash log to Downloads. Remove before release. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
 
     <application
         android:name=".MeetingAlarmApplication"
@@ -41,8 +43,18 @@
         <!-- Main Activity -->
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.MeetingAlarm" />
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.MeetingAlarm">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="fathom-callback"
+                    android:scheme="meetingalarm" />
+            </intent-filter>
+        </activity>
 
         <!-- Alarm Notification Activity -->
         <activity

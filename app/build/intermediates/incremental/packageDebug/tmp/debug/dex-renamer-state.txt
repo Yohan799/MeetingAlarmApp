@@ -1,10 +1,15 @@
-#Tue Feb 03 21:14:34 IST 2026
+#Sun Feb 15 15:07:22 IST 2026
 path.4=13/classes.dex
 path.3=12/classes.dex
 path.2=11/classes.dex
+renamed.9=classes10.dex
 path.1=0/classes.dex
-path.6=classes2.dex
+renamed.8=classes9.dex
+path.8=classes2.dex
+path.7=9/classes.dex
+path.6=1/classes.dex
 path.5=15/classes.dex
+renamed.10=classes11.dex
 path.0=classes.dex
 base.4=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
 base.3=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
@@ -14,9 +19,16 @@ base.0=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debu
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
+path.10=6/classes.dex
 renamed.0=classes.dex
+base.9=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+path.9=classes3.dex
+renamed.7=classes8.dex
+base.8=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 renamed.6=classes7.dex
+base.7=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
 renamed.5=classes6.dex
-base.6=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.6=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 renamed.4=classes5.dex
 base.5=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.10=D\:\\meeting alarm\\MeetingAlarmApp\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex

@@ -1,68 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/alarm_background">
+    android:background="@drawable/bg_obsidian_gradient">
 
-    <!-- Background decorative orbs -->
+    <!-- Ambient Glow Orb - Top Right -->
     <View
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="-100dp"
-        android:layout_marginEnd="-100dp"
-        android:alpha="0.15"
-        android:background="@drawable/glow_circle"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-60dp"
+        android:layout_marginEnd="-60dp"
+        android:alpha="0.2"
+        android:background="@drawable/bg_glow_orb"
+        android:backgroundTint="@color/teal_core"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Ambient Glow Orb - Bottom Left -->
     <View
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="-60dp"
-        android:layout_marginBottom="-60dp"
-        android:alpha="0.1"
-        android:background="@drawable/glow_circle"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginBottom="-40dp"
+        android:alpha="0.15"
+        android:background="@drawable/bg_glow_orb"
+        android:backgroundTint="@color/primary_vivid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Main Pulsing Background with Glow -->
     <FrameLayout
         android:id="@+id/pulseContainer"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toTopOf="@+id/contentCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintVertical_bias="0.4">
 
-        <!-- Outer pulse ring -->
+        <!-- Pulse Ring 3 (Outer) -->
         <View
             android:id="@+id/pulseRing3"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:alpha="0.1"
-            android:background="@drawable/glow_circle" />
+            android:background="@drawable/ic_pulse_ring"
+            android:backgroundTint="@color/primary_vivid" />
 
-        <!-- Middle pulse ring -->
+        <!-- Pulse Ring 2 -->
         <View
             android:id="@+id/pulseRing2"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             android:layout_gravity="center"
             android:alpha="0.2"
-            android:background="@drawable/glow_circle" />
+            android:background="@drawable/ic_pulse_ring"
+            android:backgroundTint="@color/primary_vivid" />
 
-        <!-- Inner pulse ring -->
+        <!-- Pulse Ring 1 (Inner) -->
         <View
-            android:id="@+id/pulseBackground"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/pulseRing1"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            android:alpha="0.4"
-            android:background="@drawable/glow_circle" />
+            android:alpha="0.3"
+            android:background="@drawable/ic_pulse_ring"
+            android:backgroundTint="@color/primary_vivid" />
 
         <!-- Alarm Icon -->
         <ImageView
@@ -70,118 +77,96 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_alarm_ringing"
+            android:background="@drawable/bg_glass_card"
+            android:padding="16dp"
+            android:src="@drawable/ic_alarm_logo"
             app:tint="@color/white" />
 
     </FrameLayout>
 
-    <!-- Content Card with Liquid Glass -->
-    <LinearLayout
+    <!-- Content Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/liquid_glass_card"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingHorizontal="32dp"
-        android:paddingTop="36dp"
-        android:paddingBottom="32dp"
+        android:background="@drawable/bg_glass_card"
+        android:padding="32dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pulseContainer">
+        app:layout_constraintTop_toBottomOf="@+id/pulseContainer"
+        app:layout_constraintVertical_bias="0.2"
+        tools:layout_editor_absoluteX="24dp">
 
-        <!-- Meeting Reminder Label -->
         <TextView
             android:id="@+id/tvAlarmTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha="0.8"
+            android:alpha="0.7"
             android:fontFamily="sans-serif-medium"
             android:letterSpacing="0.15"
-            android:text="MEETING REMINDER"
-            android:textColor="@color/secondary"
+            android:text="MEETING STARTING"
+            android:textColor="@color/teal_core"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Event Title -->
         <TextView
             android:id="@+id/tvEventTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:letterSpacing="0.01"
-            android:text="Team Standup Meeting"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="Team Standup"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlarmTitle" />
 
-        <!-- Gradient Divider Line -->
+        <!-- Divider -->
         <View
-            android:layout_width="80dp"
-            android:layout_height="4dp"
+            android:id="@+id/divider"
+            android:layout_width="60dp"
+            android:layout_height="2dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/gradient_button_background" />
+            android:background="@drawable/bg_gradient_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventTitle" />
 
-        <!-- Time Display -->
         <TextView
             android:id="@+id/tvEventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-light"
-            android:letterSpacing="0.02"
             android:text="10:30 AM"
-            android:textColor="@color/white"
-            android:textSize="52sp" />
+            android:textColor="@color/text_primary"
+            android:textSize="56sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-        <!-- Date Display -->
         <TextView
             android:id="@+id/tvEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:alpha="0.75"
+            android:layout_marginTop="4dp"
+            android:alpha="0.6"
             android:fontFamily="sans-serif"
-            android:text="Today, Dec 15 2024"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:text="Today"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventTime" />
 
-        <!-- Meeting Link (if available) -->
-        <LinearLayout
-            android:id="@+id/meetingLinkContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/glass_alarm_card"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="10dp"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_join_meeting"
-                app:tint="@color/secondary" />
-
-            <TextView
-                android:id="@+id/tvMeetingLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Join via Google Meet"
-                android:textColor="@color/secondary"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Action Buttons Container -->
     <LinearLayout
@@ -189,88 +174,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="32dp"
         android:layout_marginBottom="48dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Join Meeting Button - Full Width (shown when meeting link exists) -->
-        <com.google.android.material.button.MaterialButton
+        <!-- Join Meeting Button (Primary) -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnJoinMeeting"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/button_join_modern"
+            android:background="@drawable/bg_gradient_button"
             android:fontFamily="sans-serif-medium"
             android:letterSpacing="0.03"
-            android:stateListAnimator="@null"
-            android:text="Join Meeting"
+            android:text="Join Meeting Now"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="gone"
-            app:backgroundTint="@null"
-            app:cornerRadius="16dp"
-            app:icon="@drawable/ic_join_meeting"
-            app:iconGravity="textStart"
-            app:iconPadding="12dp"
-            app:iconSize="22dp"
-            app:iconTint="@color/white" />
+            tools:visibility="visible" />
 
-        <!-- Snooze and Dismiss Buttons Row -->
+        <!-- Snooze and Dismiss Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Snooze Button -->
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSnooze"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_snooze_modern"
+                android:background="@drawable/bg_glass_card"
                 android:fontFamily="sans-serif-medium"
                 android:letterSpacing="0.02"
-                android:stateListAnimator="@null"
                 android:text="Snooze"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:backgroundTint="@null"
-                app:cornerRadius="16dp"
-                app:icon="@drawable/ic_snooze"
-                app:iconGravity="textStart"
-                app:iconPadding="10dp"
-                app:iconSize="20dp"
-                app:iconTint="@color/white" />
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
 
-            <!-- 16dp visual gap between buttons (8dp margin on each side) -->
-
-            <!-- Dismiss Button -->
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnDismiss"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="56dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_dismiss_modern"
+                android:background="@drawable/bg_glass_card"
                 android:fontFamily="sans-serif-medium"
-                android:letterSpacing="0.02"
-                android:stateListAnimator="@null"
                 android:text="Dismiss"
+                android:textAllCaps="false"
                 android:textColor="@color/text_secondary"
-                android:textSize="15sp"
-                app:backgroundTint="@null"
-                app:cornerRadius="16dp"
-                app:icon="@drawable/ic_dismiss"
-                app:iconGravity="textStart"
-                app:iconPadding="10dp"
-                app:iconSize="20dp"
-                app:iconTint="@color/text_secondary" />
+                android:textSize="16sp" />
 
         </LinearLayout>
+        
+        <TextView
+            android:id="@+id/tvMeetingLink"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:visibility="gone"
+            tools:visibility="gone"
+             />
 
     </LinearLayout>
 
