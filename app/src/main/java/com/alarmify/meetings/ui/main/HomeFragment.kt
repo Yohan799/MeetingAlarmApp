@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,6 @@ import com.alarmify.meetings.data.model.CalendarEvent
 import com.alarmify.meetings.data.repository.CalendarRepository
 import com.alarmify.meetings.data.repository.FathomRepository
 import com.alarmify.meetings.databinding.FragmentHomeBinding
-import com.alarmify.meetings.debug.CrashLogger
 import com.alarmify.meetings.ui.adapter.EventsAdapter
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -42,6 +42,10 @@ class HomeFragment : Fragment() {
     
     // Default alarm times in minutes
     private val defaultAlarmTimes = listOf(5, 10, 15, 30, 60)
+    
+    companion object {
+        private const val TAG = "HomeFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,20 +58,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        try {
-            CrashLogger.logDebug(requireContext(), "Home", "HomeFragment.onViewCreated started")
-            initializeComponents()
-            CrashLogger.logDebug(requireContext(), "Home", "Components initialized")
-            setupRecyclerView()
-            CrashLogger.logDebug(requireContext(), "Home", "RecyclerView set up")
-            setupClickListeners()
-            checkExactAlarmPermission()
-            CrashLogger.logDebug(requireContext(), "Home", "Starting loadCalendarEvents...")
-            loadCalendarEvents()
-            CrashLogger.logDebug(requireContext(), "Home", "HomeFragment.onViewCreated completed OK")
-        } catch (e: Exception) {
-            CrashLogger.logError(requireContext(), "Home-onViewCreated", e)
-        }
+        initializeComponents()
+        setupRecyclerView()
+        setupClickListeners()
+        checkExactAlarmPermission()
+        loadCalendarEvents()
     }
 
     override fun onDestroyView() {
@@ -132,10 +127,7 @@ class HomeFragment : Fragment() {
         
         lifecycleScope.launch {
             try {
-                CrashLogger.logDebug(requireContext(), "Home", "Fetching calendar events...")
-                
                 val fetchedEvents = calendarRepository.fetchUpcomingEvents()
-                CrashLogger.logDebug(requireContext(), "Home", "Fetched ${fetchedEvents.size} events")
                 events.clear()
                 events.addAll(fetchedEvents)
                 
@@ -146,12 +138,12 @@ class HomeFragment : Fragment() {
                     try {
                         syncFathomData()
                     } catch (e: Exception) {
-                        CrashLogger.logError(requireContext(), "Home-Fathom", e)
+                        Log.e(TAG, "Fathom sync error", e)
                     }
                 }
                 
             } catch (e: Exception) {
-                CrashLogger.logError(requireContext(), "Home-loadEvents", e)
+                Log.e(TAG, "Error loading events", e)
                 if (_binding != null) {
                     binding.progressBar.visibility = View.GONE
                     binding.swipeRefreshLayout.isRefreshing = false
@@ -220,9 +212,6 @@ class HomeFragment : Fragment() {
         activity?.runOnUiThread {
              if (_binding != null) {
                 updateUIState()
-                if (matchedCount > 0) {
-                     Toast.makeText(requireContext(), "Found $matchedCount Fathom summaries", Toast.LENGTH_SHORT).show()
-                }
              }
         }
     }

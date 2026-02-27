@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.alarmify.meetings.R
 import com.alarmify.meetings.data.auth.FathomAuthManager
 import com.alarmify.meetings.databinding.ActivityMainBinding
-import com.alarmify.meetings.debug.CrashLogger
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -22,23 +21,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try {
-            CrashLogger.logDebug(this, "Main", "MainActivity.onCreate started")
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-            
-            fathomAuthManager = FathomAuthManager(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
+        fathomAuthManager = FathomAuthManager(this)
 
-            CrashLogger.logDebug(this, "Main", "Setting up navigation...")
-            setupNavigation()
-            
-            CrashLogger.logDebug(this, "Main", "Handling auth intent...")
-            // Handle OAuth callback if app was launched via deep link
-            handleAuthIntent(intent)
-            CrashLogger.logDebug(this, "Main", "MainActivity.onCreate completed OK")
-        } catch (e: Exception) {
-            CrashLogger.logError(this, "Main-onCreate", e)
-        }
+        setupNavigation()
+        
+        // Handle OAuth callback if app was launched via deep link
+        handleAuthIntent(intent)
     }
     
     override fun onNewIntent(intent: Intent) {
@@ -65,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigation() {
         // Set initial fragment
-        CrashLogger.logDebug(this, "Main", "Loading HomeFragment...")
         setCurrentFragment(homeFragment)
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -78,14 +68,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
-        try {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, fragment)
-                commit()
-            }
-            CrashLogger.logDebug(this, "Main", "Fragment set: ${fragment.javaClass.simpleName}")
-        } catch (e: Exception) {
-            CrashLogger.logError(this, "Main-setFragment", e)
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainer, fragment)
+            commit()
         }
     }
 }

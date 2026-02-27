@@ -11,7 +11,6 @@ import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.alarmify.meetings.databinding.ActivitySplashBinding
-import com.alarmify.meetings.debug.CrashLogger
 import com.alarmify.meetings.ui.auth.SignInActivity
 import com.alarmify.meetings.ui.main.MainActivity
 
@@ -97,24 +96,16 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkUserAuthentication() {
-        try {
-            val account = GoogleSignIn.getLastSignedInAccount(this)
-            CrashLogger.logDebug(this, "Splash", "Last signed-in account: ${account?.email ?: "NONE"}")
-            
-            val intent = if (account != null) {
-                CrashLogger.logDebug(this, "Splash", "Navigating to MainActivity")
-                Intent(this, MainActivity::class.java)
-            } else {
-                CrashLogger.logDebug(this, "Splash", "Navigating to SignInActivity")
-                Intent(this, SignInActivity::class.java)
-            }
-            
-            startActivity(intent)
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-            finish()
-        } catch (e: Exception) {
-            CrashLogger.logError(this, "Splash-auth", e)
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        
+        val intent = if (account != null) {
+            Intent(this, MainActivity::class.java)
+        } else {
+            Intent(this, SignInActivity::class.java)
         }
+        
+        startActivity(intent)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        finish()
     }
 }
-

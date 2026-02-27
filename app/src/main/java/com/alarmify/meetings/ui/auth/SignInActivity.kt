@@ -4,10 +4,9 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.OvershootInterpolator
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,7 +21,6 @@ import com.google.api.services.calendar.CalendarScopes
 import com.alarmify.meetings.R
 import com.alarmify.meetings.data.repository.AccountRepository
 import com.alarmify.meetings.databinding.ActivitySignInBinding
-import com.alarmify.meetings.debug.CrashLogger
 import com.alarmify.meetings.ui.main.MainActivity
 
 class SignInActivity : AppCompatActivity() {
@@ -31,40 +29,36 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var accountRepository: AccountRepository
     
+    companion object {
+        private const val TAG = "SignInActivity"
+    }
+    
     private val signInLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        CrashLogger.logDebug(this, "SignIn", "Sign-in result code: ${result.resultCode}")
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
             val account = task.getResult(ApiException::class.java)
-            CrashLogger.logDebug(this, "SignIn", "Sign-in success: ${account?.email}")
             handleSignInResult(account)
         } catch (e: ApiException) {
-            CrashLogger.logError(this, "SignIn", e)
+            Log.e(TAG, "Sign in failed: ${e.statusCode}", e)
             Toast.makeText(this, "Sign in failed: ${e.statusCode} - ${e.message}", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
-            CrashLogger.logError(this, "SignIn-Unexpected", e)
+            Log.e(TAG, "Unexpected sign-in error", e)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try {
-            CrashLogger.logDebug(this, "SignIn", "SignInActivity.onCreate started")
-            binding = ActivitySignInBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+        binding = ActivitySignInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            accountRepository = AccountRepository(this)
-            
-            animateEntrance()
-            setupGoogleSignIn()
-            updateAccountList()
-            setupClickListeners()
-            CrashLogger.logDebug(this, "SignIn", "SignInActivity.onCreate completed OK")
-        } catch (e: Exception) {
-            CrashLogger.logError(this, "SignIn-onCreate", e)
-        }
+        accountRepository = AccountRepository(this)
+        
+        animateEntrance()
+        setupGoogleSignIn()
+        updateAccountList()
+        setupClickListeners()
     }
     
     private fun animateEntrance() {
@@ -145,17 +139,14 @@ class SignInActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnAddAccount.setOnClickListener {
-            CrashLogger.logDebug(this, "SignIn", "Add Account tapped, signing out first...")
             // Sign out any current session to allow choosing a new account
             googleSignInClient.signOut().addOnCompleteListener {
-                CrashLogger.logDebug(this, "SignIn", "Sign-out done, launching sign-in picker")
                 val signInIntent = googleSignInClient.signInIntent
                 signInLauncher.launch(signInIntent)
             }
         }
         
         binding.btnContinue.setOnClickListener {
-            CrashLogger.logDebug(this, "SignIn", "Continue tapped, navigating to MainActivity")
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -183,4 +174,3 @@ class SignInActivity : AppCompatActivity() {
         Toast.makeText(this, "Removed $email", Toast.LENGTH_SHORT).show()
     }
 }
-

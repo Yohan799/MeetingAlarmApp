@@ -10,7 +10,6 @@ import com.google.api.client.util.DateTime
 import com.google.api.services.calendar.Calendar
 import com.google.api.services.calendar.CalendarScopes
 import com.alarmify.meetings.data.model.CalendarEvent
-import com.alarmify.meetings.debug.CrashLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -60,36 +59,28 @@ class CalendarRepository(private val context: Context) {
         val accountRepository = AccountRepository(context)
         val accounts = accountRepository.getAuthorizedAccounts()
 
-        CrashLogger.logDebug(context, "Calendar", "Authorized accounts: ${accounts.size} -> $accounts")
-
         if (accounts.isEmpty()) {
             // Fallback: Check for legacy single account if no multi-accounts stored yet
             val legacyAccount = GoogleSignIn.getLastSignedInAccount(context)
             if (legacyAccount != null) {
-                CrashLogger.logDebug(context, "Calendar", "Using legacy account: ${legacyAccount.email}")
                 // Migrate legacy account to new repository
                 accountRepository.addAccount(legacyAccount.email ?: "")
                 return@withContext fetchEventsForAccount(legacyAccount.email ?: "")
             }
-            CrashLogger.logDebug(context, "Calendar", "No accounts found at all")
             return@withContext emptyList()
         }
 
         for (email in accounts) {
             try {
-                CrashLogger.logDebug(context, "Calendar", "Fetching events for: $email")
                 val accountEvents = fetchEventsForAccount(email)
-                CrashLogger.logDebug(context, "Calendar", "Got ${accountEvents.size} events for $email")
                 allEvents.addAll(accountEvents)
             } catch (e: Exception) {
-                CrashLogger.logError(context, "Calendar-fetch-$email", e)
+                Log.e(TAG, "Error fetching events for $email", e)
             }
         }
 
         // Sort all merged events by start time
         allEvents.sortBy { it.startTime }
-        
-        CrashLogger.logDebug(context, "Calendar", "Total events: ${allEvents.size}")
 
         return@withContext allEvents
     }
@@ -101,7 +92,6 @@ class CalendarRepository(private val context: Context) {
         val events = mutableListOf<CalendarEvent>()
         
         try {
-            CrashLogger.logDebug(context, "Calendar", "Creating credential for $email")
             // Create credential for this specific account
             val credential = GoogleAccountCredential.usingOAuth2(
                 context,
@@ -110,7 +100,6 @@ class CalendarRepository(private val context: Context) {
                 selectedAccountName = email
             }
 
-            CrashLogger.logDebug(context, "Calendar", "Building Calendar service for $email")
             val service = Calendar.Builder(
                 NetHttpTransport(),
                 GsonFactory.getDefaultInstance(),
@@ -122,11 +111,9 @@ class CalendarRepository(private val context: Context) {
             val now = DateTime(System.currentTimeMillis())
             val thirtyDaysLater = DateTime(System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000))
 
-            CrashLogger.logDebug(context, "Calendar", "Listing calendars for $email...")
             // Get all calendars for this account
             val calendarList = service.calendarList().list().execute()
             val calendars = calendarList.items ?: emptyList()
-            CrashLogger.logDebug(context, "Calendar", "Found ${calendars.size} calendars for $email")
             
             val calendarIds = calendars.map { it.id }
 
@@ -168,11 +155,11 @@ class CalendarRepository(private val context: Context) {
                         )
                     }
                 } catch (e: Exception) {
-                    CrashLogger.logError(context, "Calendar-cal-$calendarId", e)
+                    Log.e(TAG, "Error fetching calendar $calendarId", e)
                 }
             }
         } catch (e: Exception) {
-            CrashLogger.logError(context, "Calendar-account-$email", e)
+            Log.e(TAG, "Error fetching events for account $email", e)
             throw e
         }
         
